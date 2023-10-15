@@ -9,9 +9,235 @@
 </head>
 
 <body>
-    <h2>后续网站正在开发中。。。。。/</h2>
-    <script src="main.js"></script>
+<p>复习大纲</p>
+<h2>java的用途</h2>
+<h3>javaSE</h3>
+<p>是 java 语言的标准版，用于桌面应用开发，是java EE 和 java ME的基础。</p>
+<p>复杂动画java会变的很慢。</p>
+<h3>javaME</h3>
+<p>是 java 语言的小型版，用于嵌入式电子设备。</p>
+<h3>java EE</h3>
+<p>是 java 语言的企业版，用于web方向的网站（浏览器+服务器）开发。</p>
+<p>例如微服务，springcloud。</p>
+<h3>java跨平台的简单原理就是 java不是直接运行在系统中的，而是运行在虚拟机中的。</h3>
+<h2>运算符</h2>
+<h3>隐式转换</h3>
+<p>byte short char 在运算时提升为 int</p>
+<h3>三元运算符</h3>
+<p>关系表示？表达式1:表达式2；</p>
+<h3>循环</h3>
+<p>continue 仅跳出本次循环，break结束循环。</p>
+<h3>生成随机数</h3>
+<pre><code class="language-java">java.util.Random
+    Random s = new Random();
+        s.nextInt(2);//0~1包含1
+
+Math.random() //生成一个0.0～1.0不包含 的随机浮点数
+</code></pre>
+<h2>数组</h2>
+<p><code>int[] array =new array[数组长度];</code> 直接输出 [I@a09ee92 [表示是一个数组 i表示int类型 后面表示16进制的地址。</p>
+<p>只要是new出来的对象，一定在堆里开辟了一个小空间</p>
+<p>当arr2 = arr1 时。 两个地址相同，共用变量</p>
+<h3>二维数组</h3>
+<pre><code class="language-java"> for (int i = 0; i &lt; arr.length; i++) {//基本遍历
+            for (int j = 0; j &lt; arr[i].length; j++) {
+                System.out.print(arr[i][j]+&quot; &quot;);
+</code></pre>
+<h2>方法</h2>
+<p>程序最小的执行单元，可以提高代码的复用率，提高可维护性，</p>
+<p><strong>方法的重载</strong></p>
+<p>同一个类中有多个同名的方法，参数个数类型顺序不同，构成重载</p>
+<h2>内存</h2>
+<p><strong>栈，堆，方法区，jdk8后取消了方法区，新增元空间，原来方法区里的东西有的放在堆中有的放在元空间中。</strong></p>
+<p>方法进栈运行，结束出栈。</p>
+<p>Int[] arr = new arr[]</p>
+<p>int[] arr在栈中 new 在堆中开辟地址，堆开辟的空间都有地址值。</p>
+<p><strong>Student s = new student</strong></p>
+<ol>
+    <li>在方法区加载编译后的class文件</li>
+    <li>申明局部变量 在栈里创建了 Student s</li>
+    <li>开辟堆空间 new student</li>
+    <li>默认初始化 int = 0 String = null</li>
+    <li>显示初始化 Student类里直接写了 int age = 18</li>
+    <li>构造方法初始化 构造器初始化</li>
+    <li>将内存中的地址赋值给左边的局部变量</li>
+</ol>
+<p><strong>this关键字的本质就是方法调用者的内存地址</strong></p>
+<h2>封装</h2>
+<h3>this关键字</h3>
+<p><strong>作用</strong>：区分成员变量和局部变量。</p>
+<p>成员变量和方法里参数重名时，就近原则，将调用方法的参数。</p>
+<p>this.表示成员参数</p>
+<h3>构造器</h3>
+<p><strong>作用</strong>：给对象初始化。</p>
+<p>创建对象时，自动调用空参构造。</p>
+<p>如果定义了有参构造，就不自动创建无参构造。</p>
+<p><strong>方法的重载</strong></p>
+<p>构造方法的名字一样，参数（类型，顺序，数量）不同。</p>
+<h3>javabean(可重用组件)类标准化</h3>
+<ol>
+    <li>类名明确</li>
+    <li>成员变量private修饰</li>
+    <li>至少提供两个构造方方法
+        <ol>
+            <li>无参构造方法</li>
+            <li>带所有参数的构造方法</li>
+        </ol>
+    </li>
+    <li>提供每个成员变量的set/get方法</li>
+</ol>
+<hr />
+<h2>字符串</h2>
+<h3>创建方法</h3>
+<pre><code class="language-java"> String str = &quot;1&quot;;//检查字符串在串池子中是否存在，存在就复用，不存在就创建
+
+ String str2 = new String();//少
+ String str3 = new String(&quot;你好&quot;);//少
+在堆里开辟一个空间
+ 键盘输入也是new出来的
+
+ char[]  a = {'1','2','3'};
+ String str4 = new String(a);
+
+</code></pre>
+<pre><code class="language-java"> for (int i = 0; i &lt; str.length(); i++) {
+            System.out.println(str.charAt(i));
+        }//返回字符串的索引
+
+</code></pre>
+<h3><strong>String方法</strong></h3>
+<pre><code class="language-java">substring(10, 12);截取索引 10，12不包含12的值
+</code></pre>
+<pre><code class="language-java">replace(&quot;nihao&quot;,&quot;***&quot;); 将nihao替换为*** 这里是创建了一个新的字符串赋给了调用对象。
+</code></pre>
+<pre><code class="language-java">  String str1 = &quot;waterr moon&quot;;
+        String[] str = str1.split(&quot; &quot;);截取后存入数组
+</code></pre>
+<h3>StringBuilder方法</h3>
+<p>一个可变的操作字符串的容器。</p>
+<p>java在底层对他做了特殊处理，打印对象不是地址值，而是属性。</p>
+<ol>
+    <li>
+        <pre><code class="language-java">sb.append（） //添加任意类型元素
+</code></pre>
+    </li>
+    <li>
+        <pre><code class="language-java">sb.reverse() //直接反转原始内容
+</code></pre>
+    </li>
+    <li>
+        <pre><code class="language-java">toString（） //将他变回字符串类型
+</code></pre>
+    </li>
+</ol>
+<h3>StirngBuilder扩容机制</h3>
+<p><strong>容量与长度</strong></p>
+<p>容量指的是最多可以装多少</p>
+<p>长度是已经装了多少</p>
+<pre><code class="language-java">        System.out.println(stringBuilder.capacity());获取容量
+        System.out.println(stringBuilder.length());获取长度
+</code></pre>
+<ol>
+    <li>默认容量为16的字节数组</li>
+    <li>小于16直接存</li>
+    <li>超出后*2+2</li>
+    <li>如果超出*2+2 则直接变为超出的长度</li>
+</ol>
+<h3>StringJoiner</h3>
+<pre><code>new StringJoiner（&quot;间隔符号&quot;,&quot;开始符号&quot;,&quot;结束符号&quot;）
+</code></pre>
+<h3><strong>字符串拼接的底层原理</strong></h3>
+<pre><code class="language-java">String s = &quot;a&quot;+&quot;b&quot;+&quot;c&quot;;//如果没有变量，触发字符串的优化机制，在编译的时候已经是最终的结果了。
+tostring方法的底层是new了一个字符串对象
+</code></pre>
+<p>![截屏2023-10-14 20.07.58](/Users/shuixiayue/Desktop/截屏2023-10-14 20.07.58.png)</p>
+<p><strong>jdk8以前</strong></p>
+<p>拼接一次就创建一个StringBulilder对象。</p>
+<p><strong>jdk8以后</strong></p>
+<p>预估创建一个数组</p>
+<hr />
+<h2>集合</h2>
+<p><strong>长度可变的容器，自动扩容</strong></p>
+<table>
+    <thead>
+        <tr>
+            <th align="center"></th>
+            <th align="center">数组</th>
+            <th align="center">集合</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="center">长度</td>
+            <td align="center">不可变</td>
+            <td align="center">可变</td>
+        </tr>
+        <tr>
+            <td align="center">存储类型</td>
+            <td align="center">基本数据类型 ，引用数据类型</td>
+            <td align="center">引用数据类型，基本数据类型的包装类</td>
+        </tr>
+    </tbody>
+</table>
+<pre><code class="language-java">ArrayList&lt;String&gt; list =new ArrayList();//通过泛型来限制集合的存储类型
+</code></pre>
+<pre><code class="language-java">System.out.println(list.add(&quot;1&quot;));//添加什么类型都行 所以返回值永远true
+</code></pre>
+<pre><code class="language-java">System.out.println(list.remove(&quot;111&quot;);//删除不存在的元素返回 false
+</code></pre>
+<pre><code class="language-java">System.out.println(list.remove(0));//返回被删除索引代表的值
+</code></pre>
+<pre><code class="language-java">System.out.println(list.set(0,&quot;ccc&quot;));//返回被ccc覆盖的值
+</code></pre>
+<pre><code class="language-java"> for (int i = 0; i &lt; list.size(); i++) {
+            System.out.println(list.get(i));
+        }//get搭配size遍历集合
+//如果遍历时返回了多条数据，可以用ArrayList重新接受一起返回。
+</code></pre>
+<h3>基本数据类型包装类</h3>
+<p><strong>例外</strong></p>
+<p>int ：Integer char : Charactor</p>
+<h1>java的一些方法</h1>
+<p><strong>判断回文数</strong></p>
+<pre><code class="language-java">public static boolean iszhishu(int x){
+  if(x&lt;0){
+    return false;
+  }
   
+  int ZanCun = x;//存放
+  int num  = 0;//反转后的数字
+  while(x!=0){
+    //例如数字134的实现，取模后得到4 x/10取模得到3，之后4*10+3  
+    num = num*10+x%10；
+      x /=10；
+      
+  }
+  return Zancun == num；
+
+}
+</code></pre>
+<p><strong>判断质数</strong></p>
+<pre><code class="language-java">   public static void main(String[] args) {
+    
+    }
+</code></pre>
+<pre><code class="language-java">天才想出来的输入数字后返回大写
+  private  static  char getdaxie(int number){
+        char[] arr = {'零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'};
+        return arr[number];
+
+    }
+</code></pre>
+<h1>java学习中的一些问题</h1>
+<pre><code class="language-java">if (str.charAt(i) &lt;= 'z' &amp;&amp; str.charAt(i) &gt;= 'a') {
+   count++;
+}
+if (str.charAt(i) &gt;= 65 &amp;&amp; str.charAt(i) &lt;= 90) {
+   count++;
+}
+
+纠结这两种方式,其实是一样的，char本质是找到数值去表中对比。
+</code></pre>
 </body>
 
 </html>
